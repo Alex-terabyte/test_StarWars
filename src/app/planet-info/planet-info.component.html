@@ -1,0 +1,52 @@
+<h1>Planet info</h1>
+<div
+  style="
+    display: flex;
+    width: 15rem;
+    background-color: rgb(52, 194, 128);
+    border: solid black;
+    flex-direction: column;
+  "
+>
+  <h3
+    style="
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0.2rem;
+    "
+  >
+    {{ planetinf.name }}
+  </h3>
+  <div>
+    <p>climate: {{ planetinf.climate }}</p>
+    <p>diameter: {{ planetinf.diameter }}</p>
+
+    <p>gravity: {{ planetinf.gravity }}</p>
+    <p>orbital_period: {{ planetinf.orbital_period }}</p>
+    <p>population: {{ planetinf.population }}</p>
+    <p>rotation_period: {{ planetinf.rotation_period }}</p>
+    <p>surface_water: {{ planetinf.surface_water }}</p>
+    <p>terrain: {{ planetinf.terrain }}</p>
+    <p>created: {{ planetinf.created }}</p>
+    <p>edited: {{ planetinf.edited }}</p>
+    <p>url: {{ planetinf.url }}</p>
+  </div>
+</div>
+<h1>Characters on the planet</h1>
+
+<div
+  *ngFor="let resident of planetinf.residents; let i = index"
+  style="
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.2rem;
+    border: solid black;
+    background-color: rgb(135, 198, 228);
+  "
+>
+  {{ planetinf.residents[i] }}
+</div>
+
+<!-- {{ planetinf.residents[i].slice(29).slice(0, -1) }} -->

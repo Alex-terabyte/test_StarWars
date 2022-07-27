@@ -1,0 +1,14 @@
+<h1>{{ title | titlecase }}</h1>
+
+<app-planet
+  *ngFor="let planet of planets; let i = index"
+  [planets]="planet"
+  style="
+    margin: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+  "
+>
+</app-planet>
