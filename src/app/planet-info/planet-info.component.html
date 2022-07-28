@@ -45,12 +45,17 @@
       <p>url: {{ planetinf.url }}</p>
     </div>
   </div>
-  <h1>Characters on the planet</h1>
-  <label>Choose a gender:</label>
-  <select [(ngModel)]="gender">
-    <option value="male">Male</option>
-    <option value="female">Female</option>
-  </select>
+  <div *ngIf="residents.length != 0">
+    <h1>Characters on the planet</h1>
+    <label>Choose a gender:</label>
+    <select [(ngModel)]="gender">
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="n/a">No gender</option>
+      <option value="" selected>Every</option>
+    </select>
+  </div>
+
   <!-- <input type="text" [(ngModel)]="gender" /> -->
   <div *ngIf="gender === ''">
     <div
