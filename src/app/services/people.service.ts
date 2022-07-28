@@ -8,7 +8,6 @@ export class PeopleService {
   constructor(private http: HttpClient) {}
 
   getAll(url: string): Observable<IPeople> {
-    console.log(url);
     return this.http.get<IPeople>(`${url}`);
   }
 }

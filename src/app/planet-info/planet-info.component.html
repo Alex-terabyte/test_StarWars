@@ -47,12 +47,49 @@
   </div>
   <h1>Characters on the planet</h1>
   <label>Choose a gender:</label>
-  <select ng-model="selectPeople">
+  <select [(ngModel)]="gender">
     <option value="male">Male</option>
     <option value="female">Female</option>
   </select>
+  <!-- <input type="text" [(ngModel)]="gender" /> -->
+  <div *ngIf="gender === ''">
+    <div
+      *ngFor="let person of residents"
+      style="
+        display: flex;
+        width: 20rem;
+        flex-direction: column;
+        margin: 0.2rem;
+        border: solid black;
+        background-color: rgb(135, 198, 228);
+      "
+    >
+      <h3
+        style="
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0.2rem;
+        "
+      >
+        {{ person.name }}
+      </h3>
+      <div>
+        <p>Name: {{ person.name }}</p>
+        <p>Birth year: {{ person.birth_year }}</p>
+        <p>Eye color: {{ person.eye_color }}</p>
+        <p>Gender: {{ person.gender }}</p>
+        <p>Hair color: {{ person.hair_color }}</p>
+        <p>Mass: {{ person.mass }}</p>
+        <p>Skin color: {{ person.skin_color }}</p>
+        <p>Species: {{ person.species }}</p>
+        <p>Created: {{ person.created }}</p>
+        <p>Edited: {{ person.edited }}</p>
+      </div>
+    </div>
+  </div>
   <div
-    *ngFor="let person of residents"
+    *ngFor="let person of residents | filterPerson: gender"
     style="
       display: flex;
       width: 20rem;

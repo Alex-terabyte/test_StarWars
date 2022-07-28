@@ -13,7 +13,7 @@ import { PeopleService } from '../services/people.service';
 export class PlanetInfoComponent implements OnInit {
   gender = '';
   planetinf: IPlanet;
-  @Input() residents: IPeople[] = [];
+  residents: IPeople[] = [];
   // residents$: Observable<IPeople[]>;
   id: number;
   private routeSubscription: Subscription;
@@ -32,6 +32,7 @@ export class PlanetInfoComponent implements OnInit {
       console.log(this.id);
       console.log(planet);
       this.planetinf = planet;
+
       for (let i = 0; i <= this.planetinf.residents.length - 1; i++) {
         this.peopleService
           .getAll(this.planetinf.residents[i])

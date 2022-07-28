@@ -6,8 +6,8 @@ import { IPeople } from '../models/people';
 })
 export class FilterPersonPipe implements PipeTransform {
   transform(residents: IPeople[], search: string): IPeople[] {
-    return residents.filter((r) =>
-      r.gender.toLowerCase().includes(search.toLowerCase())
+    return residents.filter(
+      (r) => r.gender.toLowerCase() === search.toLowerCase()
     );
   }
 }
