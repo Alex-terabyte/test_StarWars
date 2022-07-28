@@ -18,8 +18,8 @@ export class PlanetsComponent implements OnInit {
     this.planetsService.getAll().subscribe((planets) => {
       this.data = planets;
       this.planets = this.data.results;
-      console.log(this.planets);
-      console.log(this.data);
+      console.log('Planets', this.planets);
+      console.log('Resp', this.data);
     });
   }
 }

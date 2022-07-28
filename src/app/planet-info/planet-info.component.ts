@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable, tap } from 'rxjs';
 import { IPeople } from 'src/app/models/people';
 import { IPlanet } from 'src/app/models/planet';
 import { PlanetsService } from 'src/app/services/planets.service';
@@ -10,9 +10,11 @@ import { PeopleService } from '../services/people.service';
   selector: 'app-planet-info',
   templateUrl: './planet-info.component.html',
 })
-export class PlanetInfoComponent {
-  @Input() planetinf: IPlanet;
-  residents: IPeople;
+export class PlanetInfoComponent implements OnInit {
+  gender = '';
+  planetinf: IPlanet;
+  @Input() residents: IPeople[] = [];
+  // residents$: Observable<IPeople[]>;
   id: number;
   private routeSubscription: Subscription;
   constructor(
@@ -30,13 +32,14 @@ export class PlanetInfoComponent {
       console.log(this.id);
       console.log(planet);
       this.planetinf = planet;
+      for (let i = 0; i <= this.planetinf.residents.length - 1; i++) {
+        this.peopleService
+          .getAll(this.planetinf.residents[i])
+          .subscribe((resident) => {
+            this.residents.push(resident);
+            console.log(this.residents);
+          });
+      }
     });
-    for (let i = 0; i <= this.planetinf.residents.length; i++) {
-      this.peopleService
-        .getAll(this.planetinf.residents[i])
-        .subscribe((resident) => {
-          console.log(resident);
-        });
-    }
   }
 }

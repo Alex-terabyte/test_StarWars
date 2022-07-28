@@ -8,6 +8,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterModule, Routes } from '@angular/router';
 import { PlanetsComponent } from './pages/planets/planets.component';
 import { PlanetInfoComponent } from './planet-info/planet-info.component';
+import { PeopleComponent } from './pages/people/people.component';
+import { FormsModule } from '@angular/forms';
+import { FilterPersonPipe } from './pipes/filter-person.pipe';
 
 @NgModule({
   declarations: [
@@ -17,8 +20,11 @@ import { PlanetInfoComponent } from './planet-info/planet-info.component';
     NotFoundComponent,
     PlanetsComponent,
     PlanetInfoComponent,
+    PeopleComponent,
+    FilterPersonPipe,
   ],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule],
+
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
